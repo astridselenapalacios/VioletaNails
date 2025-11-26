@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Violeta Nails - Inicio</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+    <header class="header">
+        <h1>💅 Violeta Nails</h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="#" id="btn-clientes">Clientes</a>
+            <a href="#" id="btn-citas">Citas</a>
+            <a href="#" id="btn-servicios">Servicios</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Bienvenida a Violeta Nails</h2>
+        <p>Agenda tus citas, consulta servicios y vive una experiencia única.</p>
+
+        <button id="btn-agendar" class="btn-principal">Agendar Cita</button>
+    </section>
+
+    <!-- Modal para agregar tarea / cita -->
+    <div class="modal" id="modal-agregar">
+        <div class="modal-contenido">
+            <h3>Agendar Cita</h3>
+
+            <input type="text" id="nick" placeholder="Ingresa tu nombre">
+            <input type="text" id="servicio" placeholder="Servicio">
+            <input type="date" id="fecha">
+            <input type="time" id="hora">
+
+            <button id="guardar-cita" class="btn-guardar">Guardar</button>
+            <button id="cerrar-modal" class="btn-cerrar">Cerrar</button>
+        </div>
+    </div>
+
+    <section class="contenedor">
+        <h3>Servicios más solicitados</h3>
+
+        <div class="servicios-grid">
+            <div class="card">
+                <img src="migagenes/servicio-manicura.jpg" alt="Manicura">
+                <h4>Manicura</h4>
+                <p>Desde $15.000</p>
+            </div>
+
+            <div class="card">
+                <img src="migagenes/servicio-acrilicas.jpg" alt="Acrílicas">
+                <h4>Uñas Acrílicas</h4>
+                <p>Desde $89.000</p>
+            </div>
+
+            <div class="card">
+                <img src="migagenes/servicio-semi.jpg" alt="Semipermanente">
+                <h4>Esmaltado Semipermanente</h4>
+                <p>Desde $25.000</p>
+            </div>
+        </div>
+
+        <!-- Citas -->
+        <h3>Citas Pendientes</h3>
+        <ul id="lista-citas" class="lista"></ul>
+
+        <h3>Citas Realizadas</h3>
+        <ul id="lista-realizadas" class="lista"></ul>
+    </section>
+
+    <footer>
+        <p>© 2025 Violeta Nails | Todos los derechos reservados</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
