@@ -1,4 +1,6 @@
-
+<?php
+// Archivo convertido a PHP sin modificar nada del contenido HTML.
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,8 +14,7 @@
 <header>
     <div class="logo">💅 Violeta Nails</div>
     <nav>
-        <a href="index.html">Inicio</a>
-        <a class="active" href="servicios.html">Servicios</a>
+       <a href="../../public/index.php"> Inicio</a>
     </nav>
 </header>
 
@@ -50,7 +51,7 @@
 </section>
 
 <!-- Botón flotante para agendar cita -->
-<a href="citas.html" class="btn-flotante">🗓 Agendar Cita</a>
+<a href="citas.php" class="btn-flotante">🗓 Agendar Cita</a>
 
 </body>
 </html>

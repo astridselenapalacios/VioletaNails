@@ -13,9 +13,9 @@ const btnAgendar = document.querySelectorAll(".btn-agendar");
 btnAgendar.forEach(btn => {
     btn.addEventListener("click", () => {
         const servicio = btn.parentElement.getAttribute("data-servicio");
-        // Guardamos el servicio en localStorage para usarlo en citas.html
+        // Guardamos el servicio en localStorage para usarlo en citas.php
         localStorage.setItem("servicioSeleccionado", servicio);
-        // Redirige a citas.html
-        window.location.href = "citas.html";
+        // Redirige a citas.php
+        window.location.href = "citas.php";
     });
 });

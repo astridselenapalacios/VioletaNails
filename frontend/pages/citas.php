@@ -1,3 +1,52 @@
+<?php
+$mensaje = "";
+
+// ⬅️ Importar conexión a PostgreSQL
+include "../../backend/config/database.php";
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    // Capturar datos del formulario
+    $nombre     = $_POST["nombre"] ?? "";
+    $edad       = $_POST["edad"] ?? "";
+    $servicio   = $_POST["servicio"] ?? "";
+    $trabajador = $_POST["trabajador"] ?? "";
+    $fecha      = $_POST["fecha"] ?? "";
+    $hora       = $_POST["hora"] ?? "";
+
+    // Validación simple
+    if ($nombre !== "" && $edad !== "" && $servicio !== "" &&
+        $trabajador !== "" && $fecha !== "" && $hora !== "") {
+
+        try {
+
+            // INSERT a PostgreSQL
+            $sql = "INSERT INTO citas (nombre, edad, servicio, trabajador, fecha, hora)
+                    VALUES (:nombre, :edad, :servicio, :trabajador, :fecha, :hora)";
+
+            $stmt = $conexion->prepare($sql);
+
+            $stmt->execute([
+                ":nombre" => $nombre,
+                ":edad" => $edad,
+                ":servicio" => $servicio,
+                ":trabajador" => $trabajador,
+                ":fecha" => $fecha,
+                ":hora" => $hora
+            ]);
+
+            $mensaje = "<p style='color:green'>✅ Cita reservada con éxito</p>";
+
+        } catch (PDOException $e) {
+
+            $mensaje = "<p style='color:red'>❌ Error al guardar la cita: " . $e->getMessage() . "</p>";
+        }
+
+    } else {
+        $mensaje = "<p style='color:red'>❌ Todos los campos son obligatorios</p>";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -11,22 +60,25 @@
 <header>
     <div class="logo">💅 Violeta Nails</div>
     <nav>
-        <a href="index.html">Inicio</a>
-        <a href="servicios.html">Servicios</a>
+        <a href="../../public/index.php">Inicio</a>
+        <a href="../pages/servicios.php" class="btn-secondary">Ver Todos los Servicios</a>
     </nav>
 </header>
 
 <h1>Agendar Cita</h1>
 
-<form id="formCita">
+<?php echo $mensaje; ?>
+
+<form method="POST" action="citas.php">
+
     <label>Nombre Completo</label>
-    <input type="text" name="nombre" id="nombre" required>
+    <input type="text" name="nombre" required>
 
     <label>Edad</label>
-    <input type="number" name="edad" id="edad" required>
+    <input type="number" name="edad" required>
 
     <label>Servicio</label>
-    <select name="servicio" id="servicio" required>
+    <select name="servicio" required>
         <option value="">Seleccione un servicio</option>
         <option value="manicure">Manicure Básico  $45.000</option>
         <option value="pedicure">Pedicure Spa   $50.000</option>
@@ -36,7 +88,7 @@
     </select>
 
     <label>Estilista</label>
-    <select name="trabajador" id="trabajador" required>
+    <select name="trabajador" required>
         <option value="">Seleccione un estilista</option>
         <option value="andrea">Andrea</option>
         <option value="camila">Camila</option>
@@ -45,10 +97,10 @@
     </select>
 
     <label>Fecha</label>
-    <input type="date" name="fecha" id="fecha" required>
+    <input type="date" name="fecha" required>
 
     <label>Hora</label>
-    <select name="hora" id="hora" required>
+    <select name="hora" required>
         <option value="">Seleccione una hora</option>
         <option value="08:00-09:00">08:00 AM - 09:00 AM</option>
         <option value="09:00-10:00">09:00 AM - 10:00 AM</option>
@@ -67,17 +119,6 @@
 
     <button type="submit">Reservar Cita</button>
 </form>
-
-<p id="mensaje"></p>
-
-<script>
-document.getElementById("formCita").addEventListener("submit", function(e) {
-    e.preventDefault(); // Evita envío real
-    document.getElementById("mensaje").textContent = "✅ Cita reservada";
-    document.getElementById("mensaje").style.color = "green";
-    this.reset(); // Limpia todos los campos
-});
-</script>
 
 </body>
 </html>

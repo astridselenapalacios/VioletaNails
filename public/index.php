@@ -1,3 +1,6 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -13,9 +16,9 @@
     <div class="logo">💅 Violeta Nails</div>
 
     <nav class="menu">
-        <a href="index.html" class="active">Inicio</a>
-        <a href="servicios.html">Servicios</a>
-        <a href="#contacto">Contacto</a>
+        <!-- Cambié .html por .php para que todo funcione en PHP -->
+        <a href="../frontend/pages/servicios.php" >Servicios</a>
+        <a href="#contacto" >Contacto</a>
     </nav>
 </header>
 
@@ -50,8 +53,12 @@
     </div>
 
     <div style="text-align:center; margin-top:20px;">
-        <a href="servicios.html" class="btn-secondary">Ver Todos los Servicios</a>
+        <a href="../frontend/pages/servicios.php" class="btn-secondary">Ver Todos los Servicios</a>
     </div>
+
+
+
+
 </section>
 
 <footer id="contacto" class="footer">
